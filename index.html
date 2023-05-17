@@ -1,38 +1,35 @@
-import React, {Component} from "react";
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            var docURL = window.location.href,
+            params = [];
 
-const serviceConfigurationOptions = {
-  region: "us-east-1"
-};
-
-class SmsApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state ={
-      amount: '100',
-      payee: 'Barbeque Times',
-      time: ' 17th April 11.23 P.M.'
-    };
-    this.handleSubmit= this.handleSubmit.bind(this);
-  }
-
-  async handleSubmit(event){
-    event.preventDefault();
-  }
-
-  render() {
-    return(
-      <form onSubmit={this.handleSubmit}>
-        <h1>Debit Notification !</h1>
-        <input type="text" value={this.state.amount} id="amount"/>
-        <label> $ payment has been made towards </label>
-        <input type="text" value={this.state.payee} id="payee"/>
-        <label> on </label>
-        <input type="text" value={this.state.time} id="time"/>
-        <br/>
-        <input type="submit" />
-      </form>
-    );
-  }
-}
-  
-export default SmsApp;
+            docURL = docURL.replace(window.location.origin, '');
+            if (docURL.indexOf('/#/') > -1) {
+            docURL = docURL.split('/#/')[1];
+            if (docURL != '') {
+                if (docURL[docURL.length - 1] == '/') {
+                docURL = docURL.substring(0, docURL.length - 1);
+                }
+                params = docURL.split('/');
+                document.getElementById('amount').innerHTML = params[0];
+                document.getElementById('payee').innerHTML = params[1];
+                document.getElementById('time').innerHTML = params[2];
+            }
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <h1>Debit Notification !</h1>
+            <input type="text" id="amount"/>
+            <label> $ payment has been made towards </label>
+            <input type="text" id="payee"/>
+            <label> on </label>
+            <input type="text" id="time"/>
+            <br/>
+            <input type="submit" />
+        </div>
+    </body>
+</html>
