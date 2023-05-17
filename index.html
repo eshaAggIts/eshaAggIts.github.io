@@ -1,18 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <title>Title of the document</title>
-    </head>
-    <body>
-        <div>
-            <h1>Debit Notification !</h1>
-            <input type="text" value="100" id="amount"/>
-            <label> $ payment has been made towards </label>
-            <input type="text" value="ABC" id="payee"/>
-            <label> on </label>
-            <input type="text" value="10 P.M." id="time"/>
-            <br/>
-            <input type="submit" />
-        </div>
-    </body>
-</html>
+import React, {Component} from "react";
+
+const serviceConfigurationOptions = {
+  region: "us-east-1"
+};
+
+class SmsApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state ={
+      amount: '100',
+      payee: 'Barbeque Times',
+      time: ' 17th April 11.23 P.M.'
+    };
+    this.handleSubmit= this.handleSubmit.bind(this);
+  }
+
+  async handleSubmit(event){
+    event.preventDefault();
+  }
+
+  render() {
+    return(
+      <form onSubmit={this.handleSubmit}>
+        <h1>Debit Notification !</h1>
+        <input type="text" value={this.state.amount} id="amount"/>
+        <label> $ payment has been made towards </label>
+        <input type="text" value={this.state.payee} id="payee"/>
+        <label> on </label>
+        <input type="text" value={this.state.time} id="time"/>
+        <br/>
+        <input type="submit" />
+      </form>
+    );
+  }
+}
+  
+export default SmsApp;
