@@ -1,4 +1,4 @@
-var docURL = "https://eshaaggits.github.io/#/100/Barbeque Times/17th April 11.23 P.M./",
+var docURL = window.location.href,
 params = [];
 
 docURL = docURL.replace(window.location.origin, '');
