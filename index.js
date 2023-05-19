@@ -1,4 +1,4 @@
-var docURL = window.location.href,
+var docURL = decodeURI(window.location.href),
 params = [];
 
 docURL = docURL.replace(window.location.origin, '');
